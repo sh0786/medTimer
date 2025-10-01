@@ -3,6 +3,12 @@ package com.futsch1.medtimer;
 import static android.Manifest.permission.POST_NOTIFICATIONS;
 import static androidx.navigation.ActivityKt.findNavController;
 import static com.futsch1.medtimer.preferences.PreferencesNames.SECURE_WINDOW;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.UUID;
 
 import android.app.ActivityManager;
 import android.content.Intent;
@@ -12,6 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;

@@ -1,0 +1,192 @@
+app/src/main/java
+└── com
+    └── futsch1
+        └── medtimer
+            ├── ActivityCodes.java
+            ├── ActivityIntent.kt
+            ├── Autostart.java
+            ├── BackupManager.java
+            ├── Biometrics.kt
+            ├── GenerateTestData.kt
+            ├── LogTags.java
+            ├── MainActivity.java
+            ├── MedTimerAppIntro.kt
+            ├── MedicineViewModel.kt
+            ├── OnFragmentReselectedListener.java
+            ├── OptionsMenu.java
+            ├── ReminderNotificationChannel.kt
+            ├── ReminderNotificationChannelManager.kt
+            ├── ReminderSchedulerService.java
+            ├── RequestPostNotificationPermission.kt
+            ├── ScheduledReminder.java
+            ├── WorkManagerAccess.java
+            ├── alarm
+            │   ├── AlarmFragment.kt
+            │   └── ReminderAlarmActivity.kt
+            ├── database
+            │   ├── Converters.java
+            │   ├── FullMedicine.java
+            │   ├── JSONBackup.java
+            │   ├── JSONMedicineBackup.java
+            │   ├── JSONReminderEventBackup.java
+            │   ├── Medicine.java
+            │   ├── MedicineDao.java
+            │   ├── MedicineRepository.java
+            │   ├── MedicineRoomDatabase.java
+            │   ├── MedicineToTag.java
+            │   ├── Reminder.java
+            │   ├── ReminderEvent.java
+            │   └── Tag.java
+            ├── exporters
+            │   ├── CSVEventExport.java
+            │   ├── CSVMedicineExport.kt
+            │   ├── Common.kt
+            │   ├── Export.java
+            │   ├── PDFEventExport.kt
+            │   └── PDFMedicineExport.kt
+            ├── helpers
+            │   ├── CalendarHelper.kt
+            │   ├── DatabaseEntityEditFragment.kt
+            │   ├── DeleteHelper.java
+            │   ├── DialogHelper.kt
+            │   ├── FileHelper.java
+            │   ├── IdlingListAdapter.java
+            │   ├── IdlingResourcesPool.kt
+            │   ├── Interval.kt
+            │   ├── MedicineHelper.kt
+            │   ├── MedicineIcons.kt
+            │   ├── PathHelper.java
+            │   ├── ProgressDialogFragment.kt
+            │   ├── ReminderHelper.kt
+            │   ├── SafeHelper.kt
+            │   ├── SimpleIdlingResource.kt
+            │   ├── SummaryHelper.kt
+            │   ├── SwipeHelper.java
+            │   ├── TableHelper.java
+            │   ├── TimeHelper.java
+            │   └── ViewColorHelper.java
+            ├── medicine
+            │   ├── AdvancedReminderSettingsFragment.java
+            │   ├── AdvancedReminderSettingsMenuProvider.kt
+            │   ├── EditMedicineFragment.java
+            │   ├── EditMedicineMenuProvider.kt
+            │   ├── EstimateStockRunOutDate.kt
+            │   ├── LinkedReminderHandling.kt
+            │   ├── MedicineStockFragment.kt
+            │   ├── MedicineViewAdapter.java
+            │   ├── MedicineViewHolder.java
+            │   ├── MedicinesFragment.java
+            │   ├── MedicinesMenu.kt
+            │   ├── PeriodSettings.kt
+            │   ├── ReminderViewAdapter.java
+            │   ├── ReminderViewHolder.java
+            │   ├── dialogs
+            │   │   ├── ColorPickerDialog.kt
+            │   │   ├── NewReminderDialog.kt
+            │   │   └── NotesDialog.kt
+            │   ├── editMedicine
+            │   │   ├── NotificationImportance.kt
+            │   │   └── StockReminder.kt
+            │   ├── editors
+            │   │   ├── DateTimeEditor.kt
+            │   │   ├── IntervalEditor.kt
+            │   │   ├── RemindOnDays.kt
+            │   │   └── TimeEditor.kt
+            │   └── tags
+            │       ├── MedicineWithTagsViewModel.kt
+            │       ├── TagDataFromMedicine.kt
+            │       ├── TagDataFromPreferences.kt
+            │       ├── TagDataProvider.kt
+            │       ├── TagFilterStore.kt
+            │       ├── TagViewHolder.kt
+            │       ├── TagWithStateCollector.kt
+            │       ├── TagsAdapter.kt
+            │       └── TagsFragment.kt
+            ├── overview
+            │   ├── CustomSnooze.kt
+            │   ├── DaySelector.kt
+            │   ├── EditEventSideSheetDialog.kt
+            │   ├── FilterToggleGroup.kt
+            │   ├── FragmentSwipeLayout.kt
+            │   ├── ManualDose.kt
+            │   ├── ManualDoseListEntryAdapter.kt
+            │   ├── NextReminders.kt
+            │   ├── OverviewEvent.kt
+            │   ├── OverviewFragment.kt
+            │   ├── OverviewViewModel.kt
+            │   ├── OverviewViewModelFactory.kt
+            │   ├── ReminderViewHolder.kt
+            │   ├── RemindersViewAdapter.kt
+            │   ├── VariableAmount.kt
+            │   └── actions
+            │       ├── ActionsBase.kt
+            │       ├── ActionsFactory.kt
+            │       ├── ReminderEventActions.kt
+            │       └── ScheduledReminderActions.kt
+            ├── preferences
+            │   ├── DisplaySettingsFragment.kt
+            │   ├── NotificationSettingsFragment.kt
+            │   ├── PreferencesFragment.kt
+            │   ├── PreferencesNames.java
+            │   ├── PrivacyPreferencesFragment.kt
+            │   ├── RepeatRemindersPreferencesFragment.java
+            │   └── WeekendModePreferencesFragment.java
+            ├── reminders
+            │   ├── AllTakenWork.kt
+            │   ├── NotificationAction.java
+            │   ├── NotificationSoundManager.kt
+            │   ├── NotificationWork.java
+            │   ├── Notifications.java
+            │   ├── PendingIntentBuilder.java
+            │   ├── ReminderProcessor.java
+            │   ├── ReminderWork.java
+            │   ├── RepeatReminderWork.java
+            │   ├── RescheduleWork.java
+            │   ├── SkippedWork.java
+            │   ├── SnoozeWork.java
+            │   ├── StockHandlingWork.kt
+            │   ├── TakenWork.java
+            │   ├── WeekendMode.java
+            │   ├── notificationFactory
+            │   │   ├── BigReminderNotificationFactory.kt
+            │   │   ├── NotificationFactory.kt
+            │   │   ├── NotificationIntentBuilder.kt
+            │   │   ├── NotificationStringBuilder.kt
+            │   │   ├── OutOfStockNotificationFactory.kt
+            │   │   ├── ReminderNotificationFactory.kt
+            │   │   └── SimpleReminderNotificationFactory.kt
+            │   └── scheduling
+            │       ├── CyclesHelper.java
+            │       ├── IntervalScheduling.kt
+            │       ├── LinkedScheduling.kt
+            │       ├── ReminderScheduler.java
+            │       ├── Scheduling.kt
+            │       ├── SchedulingFactory.kt
+            │       ├── SchedulingSimulator.kt
+            │       └── StandardScheduling.kt
+            ├── remindertable
+            │   ├── ReminderTableAdapter.java
+            │   ├── ReminderTableCellModel.java
+            │   ├── ReminderTableCellViewHolder.java
+            │   ├── ReminderTableColumnHeaderViewHolder.java
+            │   └── ReminderTableFragment.java
+            ├── statistics
+            │   ├── ActiveStatisticsFragment.java
+            │   ├── AnalysisDays.java
+            │   ├── CalendarEventsViewModel.kt
+            │   ├── CalendarFragment.kt
+            │   ├── ChartHelper.java
+            │   ├── ChartsFragment.java
+            │   ├── MedicinePerDayChart.java
+            │   ├── StatisticsFragment.java
+            │   ├── StatisticsProvider.java
+            │   └── TakenSkippedChart.java
+            ├── untitled.txt
+            └── widgets
+                ├── LatestRemindersWidgetProvider.kt
+                ├── NextRemindersWidgetProvider.kt
+                ├── WidgetImpl.kt
+                ├── WidgetLineProvider.kt
+                └── WidgetUpdateReceiver.kt
+
+22 directories, 168 files
