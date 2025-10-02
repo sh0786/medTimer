@@ -1,3 +1,4 @@
+
 name: Build
 
 on:
@@ -21,16 +22,31 @@ jobs:
     permissions: write-all
 
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/checkout@v4
       - name: Set up JDK 17
-        uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0
+        uses: actions/setup-java@v4
         with:
           java-version: "17"
           distribution: temurin
           cache: gradle
-      - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4.4.3
+      - uses: gradle/actions/setup-gradle@v4
         with:
           dependency-graph: generate-and-submit
+
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
+        
+      - name: Upload Debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Run Tests
+        run: |
+          ./gradlew testDebugUnitTest || true
+          ./gradlew connectedDebugAndroidTest || true
+        continue-on-error: true
 
       - name: Release
         run: ./gradlew assembleRelease
@@ -43,8 +59,9 @@ jobs:
           jarsigner -keystore $AAB_RELEASE_DIRECTORY/signingKey.jks -storepass ${{ secrets.SIGNING_KEYSTORE_PASSWORD }} \
             -keypass ${{ secrets.SIGNING_ALIAS_PASSWORD }} $AAB_RELEASE_DIRECTORY/MedTimer-release.aab ${{ secrets.SIGNING_ALIAS }}
         continue-on-error: true
+        
       - name: Upload App Bundle
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@v4
         with:
           name: aab
           path: ${{env.AAB_RELEASE_DIRECTORY}}/MedTimer-release.aab
@@ -54,6 +71,7 @@ jobs:
         run: |
           BUILD_TOOLS_VERSION=$(ls $BUILD_TOOLS_HOME | tail -1)
           echo "BUILD_TOOLS_PATH=$BUILD_TOOLS_HOME/$BUILD_TOOLS_VERSION" >> $GITHUB_ENV
+          
       - name: Sign APK
         run: |
           echo -n "${{ secrets.SIGNING_KEYSTORE }}" | base64 --decode >> $APK_RELEASE_DIRECTORY/signingKey.jks
@@ -64,16 +82,17 @@ jobs:
             $APK_RELEASE_DIRECTORY/MedTimer-release-unsigned.apk
           rm $APK_RELEASE_DIRECTORY/MedTimer-release-unsigned.apk
         continue-on-error: true
+        
       - name: Upload App Package
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@v4
         with:
           name: apk
           path: ${{env.APK_RELEASE_DIRECTORY}}/MedTimer-release-signed.apk
 
       - name: Create Release
         if: startsWith(github.ref, 'refs/tags/v')
-        uses: ncipollo/release-action@b7eabc95ff50cbeeedec83973935c8f306dfcd0b # v1.20.0
+        uses: ncipollo/release-action@v1
         with:
           artifacts: app/build/outputs/bundle/release/*.aab,app/build/outputs/apk/release/*.apk
           generateReleaseNotes: true
